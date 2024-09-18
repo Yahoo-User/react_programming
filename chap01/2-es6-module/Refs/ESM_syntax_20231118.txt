@@ -1,0 +1,102 @@
+*************************************
+* ESM(= ES6 Module System) Syntax   *
+*************************************
+
+
+1. To test "import / export" between JavaScript files,
+    Create a "package.json" file by "npm init -y" command
+    and add the following property surely into it:              <--- ***
+
+        "type": "module",                                       <--- ***
+
+
+2. When exporting modules, "export" keyword required.           <--- ***
+
+    - "export default" used only once per file.                 <--- ***
+
+    - Example :
+
+        // Used only *ONCE* per JavaScript file.                <--- ***
+        ① export default module1
+
+        // Used several times per JavaScript file.              <--- ***
+        ② export module2
+
+        export default function defaultFunc() {}    // export a function by default 
+        export function func2() {}                  // export a function
+        export const constant = 123                 // export a const variable
+        export let variable = "Hello"               // export a let variable
+
+    - ** NOTE **:
+    
+        > node exports.js OR ts-node exports.js
+
+        (node:16456) Warning: To load an ES module,
+            (1) set "type": "module" in the "package.json"      <--- ***
+                OR
+            (2) use the .mjs extension.                         <--- ***
+
+
+3. When importing modules, "import" & "from" keywords required. <--- ***
+
+    ① import { exported_default_module | { exported_modules separated by ',' } } from "XXX.js"
+    ② import * as I from "XXXjs"
+
+    ex) 
+        // Import modules: m1, m2, m3,
+        // except "export default" module.
+        import { m1, m2, m3 } from "exports.js"
+
+        // import "export default" module
+        import defaultModule from "exports.js"
+
+
+4. We need codes for exporting modules and for import modules.
+
+    - exports.js  : code for exporting modules
+    - import1.js  : code for importing modules #1
+    - import2.js  : code for importing modules #2
+    - import3.js  : code for importing modules #3
+
+
+5. Example of Exporing & Importing
+
+    - In "exports.js"
+
+            ①
+        --------------
+        export default function func1() {}
+
+          ②
+        ------
+        export function func2() {}
+        export const variable1 = 123
+        export let variable2 = "Yoseph"
+
+    - In "imports1.js" :
+
+        import func1, { func2, variable1, variable2 } from "./exports.js"   // ③
+
+        import func1 from "./exports.js"
+
+        import func1 as myFunc from "./exports.js"          // XX
+        import myFunc from "./exports.js                    // OK : default module, "func1" -> "myFunc"
+        
+    - In "import2.js" :
+
+        import { func2 as myFunc2 } from "./exports.js"                     // ④
+
+    - In "import3.js" :
+
+        import * as I from "./exports.js"                                   // ⑤
+
+
+    - ①, ② : Use "export" keyword to export the specified module
+    - ③ : To import some modules, Use "import" & "from" keywords
+           A module exported by "default" keyword could be imported without symbol, "{}
+           and module name could be renamed.                <--- ***
+    - ① : It could be only once used in a file
+    - ④ : Import a module by other name, 
+           only except the module exported by "default".    <--- ***
+
+

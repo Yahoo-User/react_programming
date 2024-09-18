@@ -1,0 +1,163 @@
+****************************************
+* JavaScript Supported Range for React *
+****************************************
+
+1. "create-react-app" suppports for all ES6 features.   <--- ***
+
+    > create-react-app -V | --version
+    
+    C:\app\...\1-by-npx>create-react-app --info
+
+    Environment Info:
+
+    current version of create-react-app: 5.0.1
+    running from C:\app\scoop\persist\nvm\nodejs\v14.21.3\node_modules\create-react-app
+
+    System:
+        OS: Windows 11 10.0.22631
+        CPU: (8) x64 Intel(R) Core(TM) i7-1065G7 CPU @ 1.30GHz
+    Binaries:
+        Node: 14.21.3 - C:\app\scoop\persist\nvm\nodejs\nodejs\node.EXE
+        Yarn: 1.22.19 - C:\app\scoop\apps\yarn\current\bin\yarn.CMD
+        npm: 6.14.18 - C:\app\scoop\persist\nvm\nodejs\nodejs\npm.CMD
+    Browsers:
+        Chrome: Not Found
+        Edge: Chromium (119.0.2151.72)
+        Internet Explorer: 11.0.22621.1
+    npmPackages:
+        react: ^18.2.0 => 18.2.0
+        react-dom: ^18.2.0 => 18.2.0
+        react-scripts: 5.0.1 => 5.0.1
+    npmGlobalPackages:
+        create-react-app: Not Found
+
+
+2. "create-react-app"(ver2.1.3) supports the following features for "ESNext" (since @ES6+):
+
+    - Exponential Operator
+
+        2**3 =  8
+        3**2 =  9
+        3**3 = 27
+
+    - async / awit function
+    - rest operator & spread operator (...)
+    - Dynamic Import
+    - class(=static) field
+    - JSX Syntax
+    - TypeScript, flow Typed System                                             <--- ***
+
+    * Recommended Typed System is "TypeScript".
+
+
+3. Polyfill
+
+    - Plugins to implement the features of web browsers defined
+      in English dictionary.                                                    <--- ***
+
+    - In JavaScript, Firstly check whether the necessary feature you want exists or not,
+      And then, In *ONLY* case that the feature doest *NOT* exist,
+      Injecting the feature into web browsers is called, "Polyfill".            <--- ***
+
+      ○ Though new standard features are introduced, 
+        If web browsers does *NOT* support the features, We couldn't use it.
+      ○ New syntax, objects, functions added in language standard.
+      ○ Even if new "syntax" *NOT* supported in almost web browsers,
+        If using "babel", We could use some features.                           <--- ***
+      ○ Using "babel", When building code, the code will be changed.
+      ○ New "objects" or "functions" are a little bit different then new "syntax.
+        Of course, New "objects" or "functions" also could be compiled when building.
+        But, These could be injected when runtime differently then new "syntax" <--- ***
+      ○ Thus, If objects or functions to be injected exists at runtime,
+        only when these are *NOT* existd,
+        It is best to inject these objects or functions.                        <--- ***
+          
+    - "create-react-app" don't include any "Polyfill".                          <--- ***
+    
+    - If you want to use added object or functions in ES6+, 
+      Please install directly Polyfills.                                        <--- ***
+
+      For this, firstly install "core-js" package:
+
+        > npm i [ -S | --save ] core-js
+
+    - Example: If you want to use "String.padStart" function added in "ES8",
+               By installed "core-js", You could use additional Polyfills optionally.               <--- ***
+
+        // index.js
+        // If imports "core-js", all other JavaScript files uses features which core-js provides.   <--- ***
+        import "core-js/features/string/pad-start"
+
+        // someFile.js
+        const value = "123".padStart(5, "0")    // "00123"
+
+    - In "babel", You can add Polyfills by "@babel/polyfill" or "@babel/preset-env" preset.         <--- ***
+
+        ○ "@babel/polyfill" includes all Polyfills *NOT* used, the bundle size could be too big.
+        ○ Using "@babel/preset-env" preset, Only necessary Polyfills could be added.
+          But Cause by Dynamic Type Language's limit, some unnecessary polyfills could be added
+          compared with direct adding by "core-js".
+
+
+4. Example Project
+
+    Step1. create a react project for testing Polyfills.
+
+        > create-react-app 3-polyfill
+
+        > cd 3-polyfill
+        > npm i [ -S | --save ] @babel/plugin-proposal-private-property-in-object
+
+        > create-react-app --info
+        > npm ls --depth=0
+
+
+    Step2. Install "core-js" package for Polyfills
+
+        > npm i [ -S | --save ] core-js
+
+        > C:\app\...\3-polyfill>npm ls --depth=0
+        3-polyfill@0.1.0 C:\app\...\3-polyfill
+        +-- @babel/plugin-proposal-private-property-in-object@7.21.11
+        +-- @testing-library/jest-dom@5.17.0
+        +-- @testing-library/react@13.4.0
+        +-- @testing-library/user-event@13.5.0
+        +-- core-js@3.33.3                              <--- ***
+        +-- react@18.2.0
+        +-- react-dom@18.2.0
+        +-- react-scripts@5.0.1
+        `-- web-vitals@2.1.4
+
+
+    Step3. Run default react app by "npm start"
+
+        > npm run
+        > npm start
+
+
+    Step4. Test for Polyfills
+
+        > cd src
+
+        > vi index.js
+        add the following import statement:
+
+        import "core-js/features/string/pad-start"
+
+        > vi somefile.js
+
+        const value = "123".padStart(5, "0")
+        const.log(value)        // "00123"
+
+        > node someother.js
+        00123
+
+        > ts-node someother.js
+        00123
+
+
+5. 
+
+
+
+

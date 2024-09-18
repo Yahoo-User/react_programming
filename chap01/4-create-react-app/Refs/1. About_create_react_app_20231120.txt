@@ -1,0 +1,358 @@
+*************************************
+* About create-react-app            *
+*************************************
+
+1. What is "create-react-app" npm package ?
+
+    - The package to construct "Web Application Development Environment".           <--- ***
+    - Create React apps with no build configuration.                                <--- ***
+    - If you want only "React Natives", *NOT* Web Application,
+      Please use "*expo*" to construct "React Navtive" 
+      development environment automatically.                                        <--- ***
+
+
+2. This package also includes "babel" & "webpack".                                  <--- ***
+
+    - Except for that, also includes :                                              <--- ***
+        a. Test System
+        b. HMR (Hot-Module-Replacement)
+        c. ES6+ Syntax
+        d. CSS Post-processing
+      
+      and so on, Almost necessary development environment constructed.
+
+    - If you construct the above development environment directly,
+      You need long-term and have to maintain directory.
+
+
+3. Using this "create-react-app" package, You *only* have to "version up" this
+   to improve established features or add new features.                             <--- ***
+
+    - The other advantages are for "create-react-app" package to determine
+      best resolution to solve the problem when a problem have several resolutions.
+
+    - This package can urge our to concentrate on the other more important thing than problems.
+
+
+4. How to use "create-react-app" package ?                                          <--- ***
+
+    --------------------------
+    Step.1 To construct React Web Application Development Environment by "npx" command.
+    --------------------------
+
+        * The below commands make <react-project-folder> directory 
+          and create some directories and files under that. (***)
+
+            > npx create-react-app <react-project-folder> [ --template typescript ] ① : ***
+            > npm i -D @babel/plugin-proposal-private-property-in-object            ② : *** In "create-react-app" v5.0.x
+
+        * Even though the "create-react-app" package is *NOT* installed,
+          "npx" command automatically download and install it. (***)
+
+        * Thus, No "create-react-app" installed in local/global area. (***)
+
+        * Example:
+
+            > npx create-react-app 1-by-npx                                     ①
+
+            Creating a new React app in C:\app\...\1-by-npx.
+            Installing packages. This might take a couple of minutes.
+                                                                        --- *** ---
+            Installing ① react ② react-dom and ③ react-scripts with "cra-template"...
+            ...
+            ...
+            Success! Created 1-by-npx at C:\app\...\1-by-npx
+            Inside that directory, you can run several commands:
+
+                (1) npm start   - Starts the "development server".
+
+                (2) npm run build                                       <--- ***
+                    Bundles the app into "static files" for "production".
+
+                    > 1-by-npx@0.1.0 build C:\app\...\1-by-npx
+                    > react-scripts build                               <--- ***
+
+                    Creating an optimized production build...
+                    Compiled successfully.
+
+                    File sizes after gzip:
+
+                    46.62 kB  build\static\js\main.ce6837fc.js
+                    1.78 kB   build\static\js\787.71ed93c2.chunk.js
+                    515 B     build\static\css\main.9e6d80f5.css
+
+                    The project was built assuming it is hosted at /.
+                    You can control this with the homepage field in your package.json.
+
+                    The "build" folder is ready to be deployed.         <--- ***
+                    You may serve it with a "static server":            <--- ***
+
+                    npm install -g serve        ① : ***
+                    serve -s build              ② : ***
+
+                    or
+                    
+                    npx serve -s build          ③ : ***, short-hand of ①, ②
+
+                    Find out more about deployment here:
+
+                    https://cra.link/deployment
+
+                (3) npm test    - Starts the test runner.
+
+                (4) npm run eject
+                    Removes this tool and copies build dependencies, configuration files
+                    and scripts into the "app" directory. If you do this, you can’t go back!
+
+            We suggest that you begin by typing:
+
+                > cd 1-by-npx
+                > npm start
+
+            Happy hacking!
+
+            > npm i -D @babel/plugin-proposal-private-property-in-object        ②
+
+            > npm ls --depth=0                                                  ③
+                1-by-npx@0.1.0 C:\app\...\1-by-npx
+                +-- @babel/plugin-proposal-private-property-in-object@7.21.11   <--- ***
+                +-- @testing-library/jest-dom@5.17.0
+                +-- @testing-library/react@13.4.0
+                +-- @testing-library/user-event@13.5.0
+                +-- react@18.2.0                                                <--- ***
+                +-- react-dom@18.2.0                                            <--- ***
+                +-- react-scripts@5.0.1                                         <--- ***
+                `-- web-vitals@2.1.4
+
+            > create-react-app --info                   # Print environment debug info
+
+    --------------------------
+    Step.2 By "create-react-app" command in directly installed "create-react-app" global package,
+           Create React Web App because of no "npx" command or too old "npm" command.
+    --------------------------
+
+        * The below commands make <react-project-folder> directory and create some directories and files. (***)
+
+            > npm { search | find } create-react-app
+            > npm { show | info | view } create-react-app
+
+            > npm i -g create-react-app                                         <--- ***
+            > npm { ls | ll | la } -g --depth=0
+
+            > create-react-app <react-project-folder>                               ① : ***
+            > npm i -D @babel/plugin-proposal-private-property-in-object            ② : *** In "create-react-app" v5.0.x
+            
+        * Example:
+
+            > create-react-app 2-by-create-react-app                                ①
+
+            Creating a new React app in C:\app\...\2-by-create-react-app.
+
+            Installing packages. This might take a couple of minutes.
+            Installing ① react ② react-dom and ③ react-scripts with cra-template...
+            ...
+            ...
+            Success! Created 2-by-create-react-app at C:\app\...\2-by-create-react-app
+            Inside that directory, you can run several commands:
+
+                (1) npm start   - Starts the "development server".
+
+                (2) npm run build                                       <--- ***
+                    Bundles the app into "static files" for "production".
+
+                    > 2-by-create-react-app@0.1.0 build C:\app\...\2-by-create-react-app
+                    > react-scripts build                               <--- ***
+
+                    Creating an optimized production build...
+                    Compiled successfully.
+
+                    File sizes after gzip:
+
+                    46.62 kB  build\static\js\main.ce6837fc.js
+                    1.78 kB   build\static\js\787.71ed93c2.chunk.js
+                    515 B     build\static\css\main.9e6d80f5.css
+
+                    The project was built assuming it is hosted at /.
+                    You can control this with the homepage field in your package.json.
+
+                    The "build" folder is ready to be deployed.         <--- ***
+                    You may serve it with a "static server":            <--- ***
+
+                    npm install -g serve        ① : ***
+                    serve -s build              ② : ***
+
+                    or
+                    
+                    npx serve -s build          ③ : ***, short-hand of ①, ②
+
+                    Find out more about deployment here:
+
+                    https://cra.link/deployment
+
+                (3) npm test    - Starts the test runner.
+
+                (4) npm run eject
+                    Removes this tool and copies build dependencies, configuration files
+                    and scripts into the "app" directory. If you do this, you can’t go back!
+
+            We suggest that you begin by typing:
+
+                > cd 2-by-create-react-app
+                > npm start
+
+            Happy hacking!
+
+            > npm i -D @babel/plugin-proposal-private-property-in-object            ②
+
+            > npm ls --depth=0                                                      ③
+                1-by-npx@0.1.0 C:\app\...\1-by-npx
+                +-- @babel/plugin-proposal-private-property-in-object@7.21.11       <--- ***
+                +-- @testing-library/jest-dom@5.17.0
+                +-- @testing-library/react@13.4.0
+                +-- @testing-library/user-event@13.5.0
+                +-- react@18.2.0                                                    <--- ***
+                +-- react-dom@18.2.0                                                <--- ***
+                +-- react-scripts@5.0.1                                             <--- ***
+                `-- web-vitals@2.1.4
+
+    --------------------------
+    Step.3 Run the Default React Web App created by Step.1 or Step.2
+    --------------------------
+
+        > cd <react-project-folder>
+        > npm start                                                                 <--- ***
+
+        * Example1:
+
+            > cd 1-by-npx
+
+            > create-react-app --info                                               ①                                
+            > npm run                                                               ②
+            > npm start                                                             ③
+
+            Starting the development server...
+            ...
+            ...
+            Add "@babel/plugin-proposal-private-property-in-object"
+            to your "devDependencies" to work around this error.                    <--- ***
+            This will make this message go away.
+
+            Compiled successfully!
+
+            You can now view 1-by-npx in the browser.
+
+            Local:            http://localhost:3000
+            On Your Network:  http://192.168.1.126:3000
+
+            Note that the "development" build is not optimized.
+            To create a "production" build, use "npm run build".
+
+            "webpack" compiled successfully.                                        <--- ***
+
+        * Example2:
+
+            > cd 2-by-create-react-app
+
+            > create-react-app --info                                               ①                                
+            > npm run                                                               ②
+            > npm start                                                             ③
+
+            Starting the development server...
+            ...
+            ...
+            Add "@babel/plugin-proposal-private-property-in-object"
+            to your "devDependencies" to work around this error.                    <--- ***
+            This will make this message go away.
+
+            Compiled successfully!
+
+            You can now view 2-by-create-react-app in the browser.
+
+            Local:            http://localhost:3000
+            On Your Network:  http://192.168.1.126:3000
+
+            Note that the "development" build is not optimized.
+            To create a "production" build, use "npm run build".
+
+            "webpack" compiled successfully                                         <--- ***
+
+    
+5. Directories and Files created by "create-react-app" package version 5.0.1 (***).
+
+    <react-project-folder>
+            │
+            ├─ README.md
+            ├─ package.json             ①   -> Do *NOT* Remove, As this is reserved when building. (***)
+            ├─ public
+            │    ├─ favicon.ico
+            │    ├─ index.html          ②   -> Do *NOT* Remove, As this is reserved when building. (***)
+            │    ├─ logo<192|512>.png
+            │    ├─ manifest.json
+            │    └─ robots.txt
+            └─ src
+                ├─ App.css              ③
+                ├─ App.js               ③
+                ├─ App.test.js          ③
+                ├─ index.css            ④
+                ├─ index.js             ④   -> Do *NOT* Remove, As this is reserved when building. (***)
+                ├─ logo.svg
+                ├─ reportWebVitals.js
+                └─ SetupTests.js
+
+    - Except for "① package.json" "② public/index.html" "④ src/index.js",
+      The other files could be "modified" or "removed", as these are for demo.  <--- ***
+
+    - All "*.js" & "*.css" files that are connected with "④ src/index.js"
+      must be placed under "src" folder.                                        <--- ***
+
+    - If "④ src/index.js" trys to import some modules "outside" "src" folder,
+      It will be failed.                                                        <--- ***
+
+    - All files to which "② public/index.html" refers
+      must be placed under "public" folder.                                     <--- ***
+
+    - All "*.js" & "*.css" files under "public" folder
+      could be "included" by "<link>" or "<script>" tags in the "② public/index.html".
+
+      But, Without special reasons, Including by "import" keywords under "src" folder
+      is better than directly connected with "② public/index.html".
+      To do this, All "*.js" or "*.css" files are compressed automatically
+      when building.                                                            <--- ***
+
+    - "Image" or "Font" files that imported by "import" keywords under "src" folder
+      also is better.                                                           <--- ***
+
+    - As "Webpack" creates "url" using "hash",
+      All "Image" or "Font" files without change could be cached in the web borwser.
+
+    - Modiying directly "② public/index.html" is ok!, Except for referencing files.
+
+      Example: <title> content.
+
+        But, If changing the "title" each page :
+            (1) A website used in the company       -> Use "react-helmet" package.
+            (2) A website used for general users    -> "SOA" important.
+                                                    So, Use "next.js" specified in the "SSR".
+
+    - Code related with the "PWA" (Progressive Web App) are in the "serviceWorker.js".
+      * PWA : the technique to make a web application act well by "offline".    <--- ***
+
+    - "PWA" is turned off by default, if a project created by "create-react-app".
+      If you want "PWA feature, the following code placed in the "④ src/index.js";
+
+            serviceWorker.register()
+
+
+6. When running React Web App by "npm start",
+   To support "HTTPs" protocol with self-signed certificate, following commands are required:
+
+    (1) Mac
+
+        > HTTPS = true npm start
+
+    (2) Windows
+
+        > set HTTPS = true && npm start             // XX : Tt does *NOT* work.
+
+
+7.

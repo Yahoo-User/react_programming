@@ -1,0 +1,97 @@
+*************************************
+* About JSX (JavaScript XML)        *
+*************************************
+
+Example:
+
+    <div className="box>    --- ①
+        <Title text="Hello, World" width={200} />   --- ② + ⑤
+        <button onClick={ () => {} }>Like</button>  --- ③ + ① + ②
+        <a href="/home" style={{ marginTop: "10px", color: "red" }}>Go Home</a>     ---  ④ + ②
+    </div>
+
+
+① Global Attribute, "class" in HTML -> Instead, use "className" keyword In JSX.     <--- ***
+    - Because the "class" keyword is used to declare a class in JavaScript .
+
+   Global Event Attribute, "on + EventTypeName" in HTML -> Apply "Camel Case".       <--- ***
+
+② In JSX, HTML DOM elements & "React Components" could be used together.            <--- ***
+
+   "<Title text=, width=>" is "React Component".
+   
+   - This React component has two attributes : "text", "width".
+
+   - Here, like the "width" attribute, Attribute value which is *NOT* "string literal"
+      should be entered by symbol, "{ value }".                                     <--- ***
+
+   - Whereas, "String literal" value can be entered directly into the a attribute.  <--- ***
+
+   - The "Title" React Component is replaced by what HTML DOM element is determined
+      by "*render*" method in "Title" React Component.                              <--- ***
+
+③ Because event handler function could be act differently between web browsers,
+   Do take care when *NOT* using library like "React".
+
+   - "React" transfers the "unified" event object ("SyntheticEvent") fortunately,
+      Regardless of web browsers when called back event handler function.           <--- ***
+
+④ You can apply CSS style to the JSX directly like HTML DOM element.               <--- ***
+
+   - Instead, use "Camel Case" in "attribute name",                                 <--- ***
+      Because that complex attribute name linked by dash("-") is diffcult in JavaScript.
+
+⑤ An element must have "<start> ~ </end>" tags, or short-hand tag: "<tag/>"        <--- ***
+
+⑥ "JSX" is *NOT* standard of JavaScript.
+   - "babel" package is required to convert a "JSX" file into a "JavaScript" file.  <--- ***
+
+      > npm i [ -S | --save ] @babel/core @babel/cli @babel/preset-react
+
+   - @babel/cli : executable "babel" binary file in CLI                             <--- ***
+   - @babel/preset-react : 
+         Plugin to convert "JSX code" into code using "createElement" function.     <--- ***
+         Plugin set to make a react application.                                    <--- ***
+
+   - "babel" receives "JavaScript" files, output other "JavaScript" files.          <--- ***
+
+   - The conversion of "JavaScript" file is done per "plugin".                      <--- ***
+     If two times conversion required, two plugin should be used.
+
+   - Some plugins might be required for *ONE* purpose.
+     These plugin set is called, "preset".                                          <--- ***
+
+     for instance, 
+      a. "babel-preset-minify" Preset : Plugin Set to compress JavaScript codes.
+      b. "@babel/preset-react" Preset : Plugin Set to make a react application.     <--- ***
+
+   - The following code is to convert JavaScript files using "babel" package, .
+
+      > npx abel ./js --out-dir ./src --presets @babel/preset-react                 <--- ***
+      > npx babel --watch ./js --out-dir ./src --presets @babel/preset-react        <--- ***
+
+      (1) "npx" command : execute binary files included external packages.
+
+         * All executable binary files included in external packages
+           saved under folloing directory: "./node_modules/.bin/"                   <--- ***
+
+         * Thus, It is the same like the following:
+
+            > npx babel    ==> execute "./node_modules/.bin/babel" directly         <--- ***
+
+         * If the "npx" command does not working, "npm" vesion too old.
+            a. At this time, install/update latest "npm" or 
+            b. directly execute "./node_modules/.bin/babel" command.                <--- ***
+
+            > npm update -g npm
+
+               OR
+
+            > ./node_modules/.bin/babel
+
+      (2) The above command first converts all JavaScript files in "./js" directory
+          using "@babel/preset-react".                                              <--- ***
+          After, Creates all the same name JavaScript files in current directory.   <--- ***
+
+      (3) If appled "watch" mode ( --watch ./js ), Whenever changing JavaScript files in "./js" directory,
+          it converted and saved automatically.                                     <--- ***

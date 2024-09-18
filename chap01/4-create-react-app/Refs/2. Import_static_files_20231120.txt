@@ -1,0 +1,120 @@
+*************************************
+* Importing static files            *
+*************************************
+
+
+1. static files:
+
+    ○ CSS           - *.css
+    ○ Image         - *.jpg, *.jpeg, *.png, *.gif, ...
+    ○ HTML          - *.html, *.htm
+    ○ SVG           - *.svg
+    ○ JavaScript    - *.js
+    ○ Font          - Web Font Files
+    ○ JSON          - *.json
+    ○ ...
+
+
+2. All files in the "<react-project-folder>/public/*" copied into "<react-project-folder>/build/*" as it is
+   When building caused by "npm run build".
+
+
+3. "<react-project-folder>/build/asset-manifest.json" file automatically created
+   When building caused by "npm run build".
+
+    - This file provides information of all resources of the React Web App by "JSON" format.
+
+    - Example:
+    
+        * Information of two ① "files" (JSON)  ② "entrypoints" (Array) sections.
+
+        {
+            "files": {
+                "main.css": "/static/css/main.9e6d80f5.css",
+                "main.js": "/static/js/main.fa8abbb5.js",
+                "static/js/787.71ed93c2.chunk.js": "/static/js/787.71ed93c2.chunk.js",
+                "static/media/large.jpg": "/static/media/large.dfa7715e74a6b1be610e.jpg",
+                "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+                "index.html": "/index.html",
+                "main.9e6d80f5.css.map": "/static/css/main.9e6d80f5.css.map",
+                "main.fa8abbb5.js.map": "/static/js/main.fa8abbb5.js.map",
+                "787.71ed93c2.chunk.js.map": "/static/js/787.71ed93c2.chunk.js.map"
+            },
+
+            "entrypoints": [
+                "static/css/main.9e6d80f5.css",
+                "static/js/main.fa8abbb5.js"
+            ]
+        }
+
+
+4. How to import the above static files into the JavaScript file(*.js).
+
+    -------------------------------
+    (1) Import CSS files (*.css)
+    -------------------------------
+        - Import Syntax :   import "path/to/XXX.css"                    ① <--- ***
+        - Target Path   :   build/static/css/main.{HASH}.chunk.css      ② <--- ***
+
+        - Even though importing several .CSS files,
+          All imported CSS files are saved into the first "Target Path" ② <--- ***
+
+    -------------------------------
+    (2) Import Image files (*.jpg, *.jpeg, *.png, *.gif, ...)
+    -------------------------------
+        - Import Syntax :
+            
+            import aliasName from "path/to/XXX.extension"               ① <--- ***
+
+        - Target Path   :
+            
+            build/static/media/XXX.{HASH}.extension                     ② <--- ***
+
+        - Imported Content :
+            a. If a image file size > 10 kb, It saved into "Target Path"    <--- ***
+            b. If a image file size <= 10 kb, 
+               It saved into the DOM in the form of "data:image" format       <--- ***
+
+        - Used by JSX   :    in the "XXX.js" file.
+        
+            <img src={aliasName} />                                     ④ <--- ***
+
+        - Example: in the "XXX.js" file.
+
+            // Accodint to the ESM(ES6 Module System) or CommonJS,
+            import smallImage from "./smallImage.jpg"                   <--- ***
+            import largeImage from "./largeImage.png"                   <--- ***
+
+            // Used In JSX like the below:
+
+            // "img" elements must have an "alt" prop,
+            // either with meaningful text, or an empty string for decorative images.
+            <img src={smallImage} alt="Small Image"/>
+            <img src={largeImage} alt="Large Image"/>
+
+    -------------------------------
+    (3) Import SVG files (*.svg)
+    -------------------------------
+        - Import Syntax :   import aliasName from "path/to/XXX.svg"     ① <--- ***
+        - Target Path   :   build/static/media/XXX.{HASH}.svg           ② <--- ***
+        - Imported Content : <svg> tag created                          ③ <--- ***
+        - Used by JSX   :   <img src={Target Path} />                   ④ <--- ***
+
+    -------------------------------
+    (4) Import JavaScript files (*.js)
+    -------------------------------
+        - Import Syntax : follow by "ESM" or "CommonJS"                 ① <--- ***
+        - Target Path   : build/static/js/XXX.{HASH}.json               ② <--- ***
+
+    -------------------------------
+    (5) Import JSON files (*.json)
+    -------------------------------
+        - Import Syntax :
+                <link rel="manifest" href="%PUBLIC_URL%/XXX.json" />    ① <--- ***
+        - Target Path   :   build/XXX.json                              ② <--- ***
+        - Imported Content : As it is originally                        ③ <--- ***
+
+
+
+
+

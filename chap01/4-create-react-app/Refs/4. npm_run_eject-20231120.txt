@@ -1,0 +1,50 @@
+***************************************
+* npm run eject                       *
+***************************************
+
+1. This command appears the "hidden" configurations of a project created 
+   by "create-react-app" command into some directories & files.
+
+
+2. When executing this command, the following changes occurred:
+
+    - Adding hidden dependencies & other configurations in detail into the "package.json" file. <--- ***
+
+    - New "<react-project-folder>/config" directory created:        <--- ***
+        (1) Under this directory, extracting all hidden configuration files of
+            "webpack", "jest", "modules", "environment and so on"
+        (2) The "webpack" configuration file, "webpack.config.js" file extracted under this directory.
+        (3) The "webpack Development Server" configuration file, "webpackDevServer.config.js" file 
+            extracted under this directory.
+
+    - New "<react-project-folder>/jest" directory created:
+        Under this directory, There are three transformation JavaScript files:
+
+        (1) babelTransformation.js
+        (2) cssTransformation.js
+        (3) fileTransformation.js
+
+    - New "<react-project-folder>/scripts" directory created:
+        Under this directory, There are three JavaScript files:
+
+        (1) "build.js"  for "npm run build"
+        (2) "start.js"  for "npm start"
+        (3) "test.js"   for "npm test"
+
+
+3. The other way of configuration of a project created by "create-react-app" command.
+
+    1st. method: Fork "react-scripts", and create a configuration on my own.
+
+    2nd. method: Use "react-app-rewired" package.
+        - Tweak the "create-react-app" "webpack" config(s) without using 'eject' 
+          and without creating a "fork" of the "react-scripts".
+
+            > npm show react-app-rewired
+            > npm home react-app-rewired
+
+        - Please refer to "https://github.com/timarney/react-app-rewired#readme"
+
+
+
+

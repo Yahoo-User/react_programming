@@ -1,0 +1,78 @@
+*************************************
+* About webpack                     *
+*************************************
+
+1. What is webpack ?
+
+    A tool to pack JavaScript program in the better deployable form.     <--- ***
+
+
+2. In early 2000s, Whenever requested new HTML to change display,
+   It only could be done by refreshing screen.
+
+   - This time, JavaScript simply plays a role in binding DOM.
+   - Thus, JavaScript files are small.
+   - But To make a website in way of SPA (= Single Page Application),
+     JavaScript files per a page get more bigger than before.
+     Thus, JavaScript files are *NOT* manageable any more.
+
+     Order of JavaScript file's declaration more complicated, 
+     because of dependencies between JavaScript files.
+     Global variables overwritings become also problems.
+
+
+3. JavaScript supports "module system" since "ES6" in language.         <--- ***
+
+    - All mordern web browsers supports ES6 module system (ESM).
+    - Old web browsers cannot use JavaScript module system.             <--- ***
+    - And a number of "JavaScript Open Sources" are *NOT* made
+      in form of ES6 module system.                                     <--- ***
+
+    a. Representational JavaScript Module System is "CommonJS".         <--- ***
+    b. Other JavaScript Module System is "ESM"(= ES6 Module System)     <--- ***
+
+
+4. "Node.JS" follows "CommonJS" Module System Standard, 
+   Then, The "CommonJS" spreads broadly.
+
+    - Thus, A number of JavaScript Open Sources are implemented
+      by "CommonJS" module system.                                      <--- ***
+
+
+5. "Webpack" supports both "ESM"(= ES6 Module System) and "CommonJS.    <--- ***
+
+    - If making codes using "module system" and running "Webpack",
+      JavaScript codes could be made runnable in old web browsers.      <--- ***
+
+    - Running "Webpack", one JavaScript file made generally             <--- ***
+      or one JavaScript file could be divided into several files.
+
+    - All we have to do is include JavaScript files made by "Webpack"
+      into "<script>" tag in HTML.                                      <--- ***
+      
+
+6. How to use "Webpack" ?
+
+    (1) Create "package.json" file by "npm" command
+
+        > npm init -y                                                   <--- ***
+
+    (2) Install ① webpack ② webpack-cli ③ react ④ react-dom packages by "npm" command
+
+        > npm i [ -S | --save ] webpack webpack-cli react@16.14.0 react-dom@16.14.0   <--- ***
+        > npm ls --depth=0
+        > npm webpack -v                                                <--- ***
+
+    (3) Merge two JavaScript files into *One* JavaScript file by "webpack",
+        then "main.js" made.
+
+        > npx webpack --mode { development | production }               <--- ***
+
+    (4) Check whether the following file exists:
+
+        ./dist/main.js
+
+    (5) HTML file uses the above "dist/main.js".                        <--- ***
+
+
+      
